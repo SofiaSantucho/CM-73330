@@ -1,0 +1,308 @@
+// _layout.scss
+
+@use "sass:color";
+@use "variables" as v;
+
+// Mixins de layout reutilizables
+
+// Contenedor centralizado con ancho máximo y padding horizontal
+@mixin container($max-width: 1200px, $padding-x: 1rem) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+}
+
+// Espaciado vertical uniforme para secciones
+@mixin section-spacing($padding-y: 2.5rem) {
+  padding-top: $padding-y;
+  padding-bottom: $padding-y;
+}
+
+// Flexbox centrado con dirección, alineamiento y gap
+@mixin flex-center(
+  $direction: row,
+  $justify: center,
+  $align: center,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// Grid responsive con columnas automáticas y gap
+@mixin grid-responsive($min-column-width: 250px, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-column-width, 1fr));
+  gap: $gap;
+}
+
+// ------------------------------------
+// Aplicación de mixins a selectores principales
+
+.navbar,
+.navbar-expand-lg,
+.bg-body-tertiary,
+.container-fluid {
+  background-color: v.$color-principal !important;
+}
+
+.hero-banner {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background-color: v.$color-principal;
+  @include flex-center(column, center, center, 1rem);
+  text-align: center;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%) blur(2px);
+    transform: scale(1.05);
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 3;
+    color: v.$color-texto;
+    animation: fadeSlideIn 1.2s ease-out forwards;
+    opacity: 0;
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      color: v.$color-texto !important;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: v.$color-texto-terciario;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+header {
+  background-color: v.$color-principal !important;
+  padding: 40px 20px;
+  text-align: center;
+  color: v.$color-texto;
+
+  h1 {
+    font-size: 3rem;
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: v.$color-texto-terciario;
+  }
+}
+
+main {
+  width: 100%;           
+  padding: 40px 1rem;    
+  background-color: v.$color-principal !important;
+  color: color.adjust(v.$color-principal, $lightness: 90%);
+  margin: 0;             
+  max-width: none;       
+}
+
+
+section {
+  @include section-spacing(4rem);
+  background-color: v.$color-principal !important;
+}
+
+.intro img,
+section img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+footer {
+  background-color: v.$color-footer;
+  padding: 30px 20px;
+  text-align: center;
+  color: color.adjust(v.$color-footer, $lightness: 40%);
+  font-size: 0.9rem;
+  border-top: 1px solid v.$color-borde;
+
+  a {
+    color: v.$color-destacado;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: v.$color-hover;
+      transition: color 0.3s ease;
+    }
+  }
+
+  .btn {
+    background-color: v.$color-destacado;
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.75rem;
+    border-radius: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 111, 0, 0.3);
+
+    &:hover {
+      background-color: color.adjust(v.$color-destacado, $lightness: -15%);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(204, 88, 0, 0.6);
+    }
+  }
+}
+
+.indice {
+  width: 200px;
+  background-color: v.$color-footer;
+  padding: 15px;
+  color: white;
+  border-radius: 8px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  @include flex-center(column, flex-start, flex-start, 1rem);
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: v.$color-destacado;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: v.$color-hover;
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Flyers eventos con transición y flex
+
+.evento-flyer {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: v.$color-terciario;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(255, 111, 0, 0.5);
+  }
+
+  .evento-img-wrapper {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    .card-title {
+      font-family: v.$fuente-titulo;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: v.$color-destacado;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: v.$color-texto-terciario;
+      margin-bottom: 0.7rem;
+    }
+
+    .btn {
+      background-color: v.$color-destacado;
+      color: #000;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      box-shadow: 0 3px 7px rgba(255, 111, 0, 0.3);
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.adjust(v.$color-destacado, $lightness: -20%);
+        color: #fff;
+        box-shadow: 0 5px 12px rgba(204, 88, 0, 0.6);
+      }
+    }
+  }
+}
+
+html {
+  font-size: 16px; // o la que prefieras, así se mantiene escala rem estándar
+}
+
+body {
+  font-size: 1rem; // igual a 16px
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

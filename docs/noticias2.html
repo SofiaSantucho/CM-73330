@@ -8,21 +8,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="evento-piramides">
 
-  <main class="container my-5">
-    <article class="news-article shadow-sm rounded">
+  <header>
+    <h2>Bit & Bass</h2>
 
-      <header class="mb-4 text-center">
+  </header>
+
+  <main class="container">
+    <article class="news-article">
+
+      <header class="news-header">
         <h1 class="news-title">Fiesta en las Pirámides de Egipto</h1>
         <p class="news-date">Publicado: Junio 2025</p>
       </header>
       
-      <figure class="news-image mb-4">
+      <figure class="news-image">
         <img
           src="img/piramidefiesta.png"
           alt="Fiesta en las Pirámides"
-          class="img-fluid rounded"
           loading="lazy"
         />
       </figure>
@@ -58,7 +63,7 @@
         </p>
       </section>
       
-      <div class="video-container mb-4">
+      <div class="video">
         <video
           controls
           autoplay
@@ -66,23 +71,28 @@
           loop
           playsinline
           preload="metadata"
-          class="news-video"
         >
           <source src="videos/piramidegiza.mp4" type="video/mp4" />
         </video>
       </div>
 
-      <footer class="text-center mt-5">
-        <a href="noticias.html" class="btn btn-outline-secondary btn-lg">
+      <div class="volver">
+        <a href="noticias.html" class="btn">
           ← Volver a Noticias
         </a>
-      </footer>
+      </div>
 
     </article>
   </main>
 
+  <footer>
+    <p>&copy; 2025 Bit & Bass. Todos los derechos reservados.</p>
+   
+  </footer>
+
 </body>
 </html>
+
 
 
 

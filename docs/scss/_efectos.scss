@@ -1,0 +1,82 @@
+// =====================
+// Animaciones Eventos
+// =====================
+@use 'variables' as vars;
+#eventos .evento-animado {
+  opacity: 0;
+  animation: fadeSlideScaleRotate 0.8s ease forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:nth-child(2) { animation-delay: 0.4s; }
+  &:nth-child(3) { animation-delay: 0.6s; }
+
+  &:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(255, 111, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .card-img-overlay {
+    opacity: 0;
+    animation: fadeInOverlay 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+
+  .card-title,
+  .card-text,
+  .btn {
+    opacity: 0;
+    animation: fadeInContent 0.8s ease forwards;
+    animation-delay: 0.9s;
+  }
+}
+
+// =====================
+// Hover Spotify Cards
+// =====================
+
+.spotify-card {
+  border-radius: 12px;
+  background-color: #121212;
+  box-shadow: 0 4px 12px rgba(255, 111, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 111, 0, 0.5);
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  iframe {
+    border: none;
+  }
+}
+
+// =====================
+// Keyframes Globales
+// =====================
+
+@keyframes fadeSlideScaleRotate {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fadeInOverlay {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInContent {
+  to { opacity: 1; }
+}

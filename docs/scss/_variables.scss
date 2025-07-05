@@ -1,0 +1,38 @@
+// docs/sass/_variables.scss
+
+$color-principal: #000000;
+$color-secundario: #1a1a1a;
+$color-terciario: #121212;
+$color-texto: #ffffff;
+$color-texto-secundario: #ddd;
+$color-texto-terciario: #ccc;
+$color-destacado: #ff6f00;
+$color-hover: #ffa733;
+$color-footer: #111111;
+$color-borde: #333333;
+$color-spotify-shadow: rgba(255, 111, 0, 0.4);
+
+$fuente-principal: 'Open Sans', sans-serif;
+$fuente-titulo: 'Montserrat', sans-serif;
+
+$color-fondo-negro: #000000;
+$color-letras-rojas: #ff0000;
+$color-letras-rojas-hover: #ff6666;
+
+// Variables específicas para eventos
+
+// Evento Charlotte
+$charlotte-rojo: #ff0000;
+$charlotte-rojo-hover: #cc0000;
+$charlotte-fondo-negro: #121212;
+
+// Evento Pirámides
+$piramides-naranja: #ff7f00;
+$piramides-naranja-claro: #ffa94d;
+$piramides-fondo: #331a00;
+
+// Evento Aranjuez (tema rojo igual que Charlotte)
+$aranjuez-rojo: #ff0000;
+$aranjuez-rojo-hover: #cc0000;
+$aranjuez-fondo-negro: #121212;
+

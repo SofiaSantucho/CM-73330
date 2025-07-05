@@ -1,0 +1,555 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+@use 'sass:color';
+
+@mixin glow($color) {
+  text-shadow: 
+    0 0 8px $color,
+    0 0 15px color.adjust($color, $lightness: 20%);
+}
+
+// COMPONENTES REUTILIZABLES (cards, videos, spotify, etc.)
+.card {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  min-height: 350px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+
+  // Animación sutil al aparecer usando mixin
+  @include mixins.fade-in-card;
+
+  // Transición para hover
+  @include mixins.transition(transform 0.3s ease);
+
+  &:hover {
+    transform: scale(1.03);
+    @include mixins.box-shadow(rgba(255, 111, 0, 0.4), 0, 8px, 20px);
+  }
+}
+
+.card img,
+.card video {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  @include mixins.transition(transform 0.3s ease);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.card-body {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: #eee;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.7rem;
+}
+
+.eventos .card {
+  background-color: #121212;
+  color: #ddd;
+  border: 2px solid #080604;
+  box-shadow: 0 0 10px rgba(255, 111, 0, 0.15);
+
+  @include mixins.transition(transform 0.3s ease, box-shadow 0.3s ease);
+
+  &:hover {
+    transform: translateY(-6px);
+    @include mixins.box-shadow(rgba(255, 111, 0, 0.5), 0, 12px, 24px);
+  }
+}
+
+.eventos .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  @include mixins.transition(transform 0.3s ease);
+
+  &:hover {
+    transform: scale(1.07);
+  }
+}
+
+.container .eventos .card-body {
+  padding: 1.2rem 1.5rem;
+  font-size: 1rem;
+  color: #eee;
+}
+
+.container .eventos .card-text {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.7rem;
+}
+
+.evento-flyer {
+  height: 350px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  @include mixins.transition(transform 0.3s ease, box-shadow 0.3s ease);
+
+  &:hover {
+    transform: scale(1.03);
+    @include mixins.box-shadow(rgba(255, 193, 7, 0.2), 0, 10px, 25px);
+  }
+}
+
+.evento-img-wrapper {
+  height: 100%;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+
+    @include mixins.transition(transform 0.3s ease);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.video {
+  margin-top: 20px;
+  text-align: center;
+
+  video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+
+    @include mixins.transition(box-shadow 0.3s ease);
+
+    &:hover {
+      @include mixins.box-shadow(rgba(255, 111, 0, 0.7));
+    }
+  }
+}
+
+.spotify-player {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+iframe[src*="spotify.com"] {
+  max-width: 700px;
+  width: 100%;
+  border: none;
+  margin: 0 auto;
+  display: block;
+}
+
+// GLOW EN EVENTOS ESPECÍFICOS
+
+.evento-charlotte,
+.evento-aranjuez {
+  background-color: vars.$color-fondo-negro;
+  color: vars.$color-letras-rojas;
+
+  header,
+  footer {
+    background-color: vars.$color-fondo-negro;
+    color: vars.$color-letras-rojas;
+  }
+
+  main.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    background-color: vars.$color-fondo-negro;
+    box-shadow: 0 0 15px 6px rgba(255, 0, 0, 0.6);
+    border: 1px solid rgba(255, 0, 0, 0.8);
+    animation: fadeInContainer 0.8s ease forwards;
+  }
+
+  article.evento-article {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: vars.$color-letras-rojas;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    animation: glowRed 2.5s ease-in-out infinite alternate;
+    @include mixins.glow(vars.$color-letras-rojas);
+  }
+
+  a {
+    color: vars.$color-letras-rojas;
+
+    &:hover {
+      color: vars.$color-letras-rojas-hover;
+    }
+  }
+
+  .evento-imagen {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+      }
+    }
+  }
+}
+
+.evento-piramides {
+  background-color: vars.$color-principal;
+  color: vars.$color-texto;
+
+  header,
+  footer {
+    background-color: vars.$color-principal;
+    color: vars.$color-texto;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  header h1 {
+    font-family: vars.$fuente-titulo;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #ff7f00; // naranja vibrante
+    text-shadow: 1px 1px 5px rgba(255, 127, 0, 0.6);
+    animation: glowOrange 3s ease-in-out infinite alternate;
+    @include mixins.glow(#ff7f00);
+  }
+
+  header h2 {
+    font-family: vars.$fuente-principal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #ffa94d;
+    margin-top: 0;
+  }
+
+  nav ul.nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #331a00; // marrón oscuro para contraste
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    list-style: none;
+
+    li a {
+      color: #ff7f00;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: vars.$fuente-principal;
+      font-size: 1.1rem;
+
+      &:hover {
+        color: #ffa94d;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  main.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    article.news-article {
+      background-color: #2a1400; // tono oscuro para que resalte contenido
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 127, 0, 0.4);
+
+      .news-header {
+        margin-bottom: 1.5rem;
+
+        h1.news-title {
+          font-family: vars.$fuente-titulo;
+          font-weight: 700;
+          font-size: 2.2rem;
+          color: #ff7f00;
+          margin-bottom: 0.3rem;
+          text-shadow: 1px 1px 4px rgba(255, 127, 0, 0.5);
+          animation: glowOrange 3s ease-in-out infinite alternate;
+        }
+
+        p.news-date {
+          font-family: vars.$fuente-principal;
+          font-size: 1rem;
+          color: #ffa94d;
+          margin: 0;
+        }
+      }
+
+      .news-image {
+        margin-bottom: 2rem;
+
+        img {
+          width: 100%;
+          max-height: 400px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: 0 0 15px rgba(255, 127, 0, 0.6);
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 127, 0, 0.8);
+          }
+        }
+      }
+
+      .news-content {
+        font-family: vars.$fuente-principal;
+        font-size: 1.1rem;
+        color: #ffdba1;
+
+        h3 {
+          color: #ff7f00;
+          margin-top: 2rem;
+          margin-bottom: 0.8rem;
+          font-weight: 700;
+          text-shadow: 1px 1px 3px rgba(255, 127, 0, 0.4);
+        }
+
+        p,
+        ul {
+          margin-bottom: 1rem;
+          line-height: 1.5;
+        }
+
+        ul {
+          list-style-type: disc;
+          padding-left: 1.5rem;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        a {
+          color: #ff7f00;
+          font-weight: 600;
+          text-decoration: none;
+
+          &:hover {
+            color: #ffa94d;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .video {
+        margin-top: 2rem;
+        text-align: center;
+
+        video {
+          width: 100%;
+          max-width: 800px;
+          border-radius: 12px;
+          box-shadow: 0 0 15px rgba(255, 127, 0, 0.6);
+          transition: box-shadow 0.3s ease;
+
+          &:hover {
+            box-shadow: 0 0 25px rgba(255, 127, 0, 0.8);
+          }
+        }
+      }
+
+      .volver {
+        margin-top: 2.5rem;
+        text-align: center;
+
+        a.btn {
+          background: linear-gradient(135deg, #ff7f00 0%, #ffa94d 100%);
+          color: #331a00;
+          font-weight: 700;
+          padding: 0.8rem 2rem;
+          border-radius: 30px;
+          text-decoration: none;
+          box-shadow: 0 0 10px rgba(255, 127, 0, 0.5);
+          transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+          &:hover {
+            background: #331a00;
+            color: #ffa94d;
+            box-shadow: 0 0 15px rgba(255, 127, 0, 0.8);
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background-color: #331a00;
+    color: #ffa94d;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-family: vars.$fuente-principal;
+    font-size: 0.9rem;
+
+    a.btn {
+      color: #ff7f00;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid #ff7f00;
+      border-radius: 30px;
+      padding: 0.6rem 1.5rem;
+      display: inline-block;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        background-color: #ff7f00;
+        color: #331a00;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+// Animaciones declaradas fuera para evitar repetición
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowRed {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 0, 0, 1);
+  }
+}
+
+@keyframes glowOrange {
+  0%, 100% {
+    text-shadow: 1px 1px 10px rgba(255, 127, 0, 0.8);
+  }
+  50% {
+    text-shadow: 1px 1px 20px rgba(255, 127, 0, 1);
+  }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  min-height: 350px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+
+  // Animación sutil al aparecer usando mixin
+  @include mixins.fade-in-card;
+
+  // Transición para hover
+  @include mixins.transition(transform 0.3s ease);
+
+  &:hover {
+    transform: scale(1.03);
+    @include mixins.box-shadow(rgba(255, 111, 0, 0.4), 0, 8px, 20px);
+  }
+}
+
+.card-noticia {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Fundamental para igualar alturas
+
+  @include mixins.fade-in-card;
+  @include mixins.transition(transform 0.3s ease);
+
+  &:hover {
+    transform: scale(1.03);
+    @include mixins.box-shadow(rgba(255, 111, 0, 0.4), 0, 8px, 20px);
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 200px; // Fijar altura consistente
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      flex-grow: 1; // Hace que el texto rellene el espacio disponible
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    a.btn {
+      margin-top: auto; // El botón siempre abajo
+    }
+  }
+}
+
