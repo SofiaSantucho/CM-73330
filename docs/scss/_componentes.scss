@@ -157,8 +157,6 @@ iframe[src*="spotify.com"] {
   display: block;
 }
 
-// GLOW EN EVENTOS ESPECÍFICOS
-
 .evento-charlotte,
 .evento-aranjuez {
   background-color: vars.$color-fondo-negro;
@@ -260,7 +258,7 @@ iframe[src*="spotify.com"] {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    background-color: #331a00; // marrón oscuro para contraste
+    background-color: #331a00; 
     padding: 1rem 0;
     margin-bottom: 2rem;
     list-style: none;
@@ -285,7 +283,7 @@ iframe[src*="spotify.com"] {
     padding: 0 1rem;
 
     article.news-article {
-      background-color: #2a1400; // tono oscuro para que resalte contenido
+      background-color: #2a1400; 
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 0 15px rgba(255, 127, 0, 0.4);
