@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto | Bit & Bass</title>
+
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-contacto">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.html" style="gap: 0.5rem;">
+      <img src="img/logoprincipal.jpg" alt="Logo" width="50" height="50" />
+      Bit & Bass
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="eventos.html">Eventos LATAM</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="noticias.html">Noticias</a>
+        </li>
+        <li class="nav-item d-none d-lg-flex align-items-center gap-3 ms-3">
+          <a href="https://www.instagram.com/tuusuario" target="_blank" class="text-white fs-5">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/tuusuario" target="_blank" class="text-white fs-5">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://open.spotify.com/user/tuusuario" target="_blank" class="text-white fs-5">
+            <i class="fab fa-spotify"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+</header>
+
+<main>
+  <!-- Imagen decorativa de fondo -->
+  <div class="bg-decorativo">
+    <img src="img/dj.jpg" alt="Fondo decorativo" />
+  </div>
+
+  <!-- Formulario de contacto -->
+  <section class="formulario-contacto">
+    <h1>Contacto</h1>
+    <form action="#" method="post">
+      <div class="mb-3">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="Tu correo" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje..." required></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</main>
+
+<footer class="text-center py-4 bg-dark text-white">
+  <p>Contacto: <a href="mailto:info@beatsandbass.com" class="text-white">info@beatsandbass.com</a></p>
+  <p>Síguenos:</p>
+  <div class="d-flex justify-content-center gap-3">
+    <a href="https://www.instagram.com/Ariansof" target="_blank" class="text-white fs-4">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/Ariansof?mibextid=ZbWKw" target="_blank" class="text-white fs-4">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://open.spotify.com/user/ubowlpdpx5vns9s9eme6r1h3j?si=27c9ba0e70904205" target="_blank" class="text-white fs-4">
+      <i class="fab fa-spotify"></i>
+    </a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

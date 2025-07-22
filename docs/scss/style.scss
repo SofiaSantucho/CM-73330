@@ -1,9 +1,10 @@
 @use 'variables' as variables;
 @use 'base' as base;
-@use 'layout' as layout;
 @use 'componentes';
+@use 'layout' as layout;
 @use 'efectos' as efectos;
 @use 'mixins' as m;
+
 
 @include m.base-styles;
 

@@ -509,7 +509,7 @@ iframe[src*="spotify.com"] {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%; // Fundamental para igualar alturas
+  height: 100%; 
 
   @include mixins.fade-in-card;
   @include mixins.transition(transform 0.3s ease);
@@ -521,7 +521,7 @@ iframe[src*="spotify.com"] {
 
   .card-img-top {
     width: 100%;
-    height: 200px; // Fijar altura consistente
+    height: 200px; 
     object-fit: cover;
   }
 
@@ -539,15 +539,121 @@ iframe[src*="spotify.com"] {
     }
 
     .card-text {
-      flex-grow: 1; // Hace que el texto rellene el espacio disponible
+      flex-grow: 1; 
       font-size: 0.9rem;
       color: #ccc;
       margin-bottom: 1rem;
     }
 
     a.btn {
-      margin-top: auto; // El botón siempre abajo
+      margin-top: auto; 
     }
   }
 }
 
+
+
+// ─────────────────────────────────────────────
+// 🎯 FORMULARIO DE CONTACTO – Layout exclusivo
+// ─────────────────────────────────────────────
+
+.formulario-contacto {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  color: white;
+
+  input,
+  textarea {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  button {
+    background-color: #ff2d55;
+    border: none;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e60039;
+    }
+  }
+}
+
+// Imagen de fondo decorativa para contacto
+.bg-decorativo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.1;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.navbar-contacto {
+  background-color: #000 !important; // fondo negro puro
+
+  .navbar-brand {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    img {
+      border-radius: 4px; // opcional, si querés bordes redondeados al logo
+    }
+  }
+
+  .nav-link {
+    color: #eee; // texto claro
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.active {
+      color: #f0a500; // un amarillo mostaza que combine
+    }
+  }
+
+  .navbar-toggler {
+    border-color: #f0a500;
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  }
+
+  .nav-item.d-none.d-lg-flex a {
+    color: #eee;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #f0a500;
+    }
+  }
+}
